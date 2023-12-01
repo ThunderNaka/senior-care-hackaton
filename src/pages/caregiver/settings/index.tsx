@@ -15,10 +15,12 @@ const Settings = () => {
     >
       <div className="mt-6 flex flex-col gap-3">
         <Button>
-          <Link href="/caregiver/update-profile">My Profile</Link>
+          <Link href="/caregiver/settings/update-profile">My Profile</Link>
         </Button>
         <Button>
-          <Link href="/caregiver/add-family-member">Add Family Member</Link>
+          <Link href="/caregiver/settings/add-family-member">
+            Add Family Member
+          </Link>
         </Button>
       </div>
     </CommonLayout>
