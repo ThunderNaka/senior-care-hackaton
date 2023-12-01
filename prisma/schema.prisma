@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+// Prisma schema file
+
+model User {
+  id                    Int              @id @default(autoincrement())
+  name                  String
+  last_name             String
+  phone_number          String?
+  email                 String           @unique
+  role                  String
+  profile_picture       String?
+  patientData           PatientData?
+  user_answers          UserAnswer[]
+}
+
+model PatientData {
+  id          Int         @id @default(autoincrement())
+  conditions  String?
+  weight      String?
+  height      String?
+  birth_date  DateTime?
+  patient     User        @relation(fields: [patientId], references: [id])
+  patientId   Int
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Question {
+  id          Int             @id @default(autoincrement())
+  question    String
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  question_answers QuestionAnswer[]
+}
+
+model Answer {
+  id          Int             @id @default(autoincrement())
+  answer      String
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  question_answers QuestionAnswer[]
+}
+
+model QuestionAnswer {
+  id          Int             @id @default(autoincrement())
+  question    Question        @relation(fields: [questionId], references: [id])
+  questionId  Int
+  answer      Answer          @relation(fields: [answerId], references: [id])
+  answerId    Int
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  user_answers UserAnswer[]
+}
+
+model UserAnswer {
+  id               Int        @id @default(autoincrement())
+  patient          User       @relation(fields: [patientId], references: [id])
+  patientId        Int
+  question_answer  QuestionAnswer @relation(fields: [questionAnswerId], references: [id])
+  questionAnswerId Int
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+}
