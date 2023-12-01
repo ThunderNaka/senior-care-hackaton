@@ -65,20 +65,6 @@ const SeniorHome = () => {
             <Button variant="inverted">I already took it</Button>
           </div>
         </div>
-        <Card className="flex flex-col gap-6 divide-y divide-dashed rounded-2xl bg-white p-4 shadow-strong">
-          <div className="flex items-center gap-4 rounded-xl">
-            <Image
-              src={"/images/bill.png"}
-              className="h-12 w-12"
-              height={45}
-              width={45}
-              alt="pill"
-            />
-            <h1 className="text-lg font-semibold">
-              Don’t forget pay UTE today
-            </h1>
-          </div>
-        </Card>
       </div>
     </CommonLayout>
   );

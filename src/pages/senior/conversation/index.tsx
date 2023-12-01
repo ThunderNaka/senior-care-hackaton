@@ -22,7 +22,7 @@ const Conversation = () => {
     <CommonLayout
       button={
         <Link href={"/senior"}>
-          <Button className="h-auto rounded-2xl p-4 text-2xl">
+          <Button className="h-auto rounded-2xl p-4 text-xl">
             End conversation
           </Button>
         </Link>
@@ -30,17 +30,18 @@ const Conversation = () => {
       className="items-center justify-end"
     >
       <div className="flex h-full flex-col gap-8">
-        <div className="flex h-full w-full flex-col items-center gap-8 px-6">
-          <div className="flex h-full flex-col justify-between pb-6">
+        <div className="flex h-full w-full flex-col items-center gap-8 py-6">
+          <div className="flex h-full flex-col justify-between">
             <div
               ref={messagesBoxRef}
-              className="flex max-h-[400px] flex-col justify-end gap-4 overflow-scroll p-2"
+              className="flex max-h-[400px] min-h-[400px] flex-col justify-end gap-4 overflow-scroll p-2"
             >
               <div className="max-w-[70%] rounded-r-2xl rounded-tl-2xl p-4 shadow-strong ">
                 <h1 className="text-left text-xl font-semibold">
                   Hi Louis, how can I help you today?
                 </h1>
               </div>
+
               <h1 className="text-left text-2xl font-semibold">
                 <div className="flex flex-col gap-2">
                   {text.map((t, i) => (
@@ -64,7 +65,7 @@ const Conversation = () => {
                 alt="volume"
               />
             )}
-            <div className="flex flex-col items-center justify-center gap-4 justify-self-end">
+            <div className="flex flex-col items-center justify-center gap-4 justify-self-end pt-4">
               <button
                 onClick={isListening ? stopListening : startListening}
                 className={cn(

@@ -33,7 +33,7 @@ const CommonLayout = (props: CommonLayoutProps) => {
     children,
   } = props;
   return (
-    <main className="flex flex-col pb-6">
+    <main className="flex flex-col">
       <div
         className={twMerge(
           `flex ${
